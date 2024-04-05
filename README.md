@@ -1,2 +1,2 @@
 # thuat_toan
-kma - k18
+kma - AT18
