@@ -1,0 +1,45 @@
+import math
+
+def SNT(n):
+    if n < 2: return False
+    for i in range(2, int(n**0.5)+1):
+        if n % i == 0: return False
+    return True
+
+def near(msv):
+    for i in range(msv, 1, -1):
+        if SNT(i) == True: 
+            d1 = msv - i
+            break
+    
+    j = msv
+    while SNT(j) != True:
+        j+=1
+    d2 = j - msv
+
+    if d1 > d2: k = d2
+    else: k = d1
+    print("k = ", k)
+    return k
+
+def nhan(a, k, p):
+    A = a
+    b = 1
+    if k == 0: return b
+
+    t = k % 2
+    if t == 1: b = A
+    k = int(k / 2)
+
+    while k > 0:
+        A = A*A % p
+        t = k % 2
+        if t == 1: b = A*b % p
+        k = int(k / 2)
+    return b
+
+if __name__ == "__main__":
+    msv = int(input("Nhap ms sinh vien: "))
+    a = int(input("Nhap a:"))
+    k = near(msv)
+    print("kq: ", nhan(a, k, msv))

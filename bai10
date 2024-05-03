@@ -1,0 +1,20 @@
+import math
+
+def SNT(n):
+    if(n < 2): return False
+    if(n < 4): return True
+    for i in range(2, int(math.sqrt(n))+1):
+        if(n % i == 0): return False
+    return True
+
+def demUoc():
+    uoc = 0
+    uocNT = 0
+    n = int(input("Nhap n: "))
+    for i in range(1, n + 1):
+        if(n % i == 0):
+            uoc+=1
+            if(SNT(i) == True): uocNT +=1
+    print(uoc, uocNT)
+
+demUoc()

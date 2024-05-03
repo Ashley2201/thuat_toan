@@ -1,0 +1,21 @@
+import math
+
+def SNT(n):
+    if n < 2: return False
+    if n < 4: return True
+    for i in range(2, int(math.sqrt(n))+1):
+        if n % i == 0: return False
+    return True
+
+def soSNT():
+    a = int(input("Nhap a:"))
+    b = int(input("Nhap b:"))
+    dem = 0
+    
+    for i in range(a+1, b):
+        if SNT(i) == True:
+            for x in range(0, int(math.sqrt(i))+1):
+                for y in range(x + 1, int(math.sqrt(i))+1):
+                    if x**2 + y**2 == i: dem+=1
+
+soSNT()

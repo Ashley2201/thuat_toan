@@ -1,0 +1,27 @@
+import math
+
+def SNT(n):
+    if(n < 2): return False
+    if(n < 4): return True
+    for i in range(2, int(math.sqrt(n)) + 1):
+        if(n % i == 0): return False
+    return True
+
+def soUoc(n):
+    p = 0
+    s = 0
+    k = 0
+    q = 0
+    for i in range(1, int(n/2) + 1):
+        if(n % i == 0) : 
+            p +=i
+            s +=1
+            if(SNT(i) == True):
+                k +=1
+                q +=i
+    p +=n
+    s +=1
+    print(n + p + s - q - k)
+
+if(__name__ == "__main__"):
+    soUoc(24)

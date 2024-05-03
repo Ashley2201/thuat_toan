@@ -1,0 +1,24 @@
+import math
+import array
+
+def SNT(n):
+    if(n < 2): return False
+    if(n < 4): return True
+    for i in range(2, int(math.sqrt(n))+1):
+        if(n % i == 0): return False
+    return True
+
+def tim4():
+    a = array.array('I', [])
+    n = int(input("Nhap n: "))
+    for i in range(2, n):
+        if(SNT(i) == True): a.append(i)
+    if(len(a) < 4): print("khong du so nguyen to")
+    if(len(a) >= 4):
+        for i in range(0, len(a)):
+            if(i + 3 > len(a) - 1): break
+            if SNT(a[i] + a[i+1] + a[i+2] + a[i+3]) == True:
+                print(a[i], a[i+1], a[i+2], a[i+3])
+    
+tim4()
+    

@@ -1,0 +1,21 @@
+import math
+
+def SNT(n):
+    if n < 2:return False
+    for i in range(2, int(n**0.5)+1):
+        if n % i == 0: return False
+    return True
+
+def UCLN(a, b):
+    while b > 0:
+        r = a % b
+        a = b
+        b = r
+    return a
+
+def tim():
+    for i in range(1, 1000):
+        for j in range(i + 1, 1000):
+            if SNT(UCLN(i, j)) == True: print(i, j)
+
+tim()

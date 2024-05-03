@@ -1,0 +1,15 @@
+import math
+
+def SNT(n):
+    if(n < 2): return False
+    if(n < 4): return True
+    for i in range(2, int(math.sqrt(n))+1):
+        if(n % i == 0): return False
+        return True
+    
+def cong2():
+    n = int(input("Nhap n: "))
+    for i in range(2, n - 1):
+        if(SNT(i) == True) and (SNT(i + 2) == True): print(i, i + 2)
+
+cong2()

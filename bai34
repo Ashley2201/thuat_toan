@@ -1,0 +1,35 @@
+import math
+import random
+def UCLN(a, b):
+    while b > 0:
+        r = a % b
+        a = b
+        b = r
+    return a
+
+def nhan(a, k, p):
+    A = a
+    b = 1
+    if k == 0: return b
+
+    t = k % 2
+    if t == 1: b = A
+    k = int(k / 2)
+
+    while k > 0:
+        A = A*A % p
+        t = k % 2
+        if t == 1: b = A*b % p
+        k = int(k / 2)
+    return b
+
+def fermat(n, t):
+    for i in range(1, t):
+        a = random.randint(2, n - 2)
+        if nhan(a, n-1, n) != 1: return False
+    return True
+
+if __name__ == "__main__":
+    n = int(input("Nhap n:"))
+    t = int(input("Nhap t:"))
+    fermat(n, t)

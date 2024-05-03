@@ -1,0 +1,25 @@
+import math
+
+def SNT(n):
+    if n < 2: return False
+    if n < 4: return True
+    for i in range(2, int(math.sqrt(n))+1):
+        if n % i == 0: return False
+    return True
+
+def tong():
+    l = int(input("Nhap l:"))
+    r = int(input("Nhap r:"))
+
+    if l > 10000 or r > 10000: print("input sai")
+
+    for i in range(l + 1, r):
+        for j in range(i+1, r):
+            if SNT(i) == True and SNT(j) == True: print(i+j)
+            else :
+                if SNT(i) == True and SNT(j) == False: print(i)
+                else :
+                    if SNT(i) == False and SNT(j) == True: print(j)
+                    else: print(0)
+
+tong()

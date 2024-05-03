@@ -1,0 +1,42 @@
+import math
+
+def SNT(n):
+    if n < 2: return False
+    for i in range(2, int(math.sqrt(n))+1):
+        if n % i == 0: return False
+    return True
+
+def UCLN(a, b):
+    while b > 0:
+        r = a % b
+        a = b
+        b = r
+    return a
+
+def nhan(a, k , p):
+    A = a
+    b = 1
+    if k == 0: return b
+
+    t = k % 2
+    k = int(k / 2)
+    if t == 1: b = A
+
+    while k > 0:
+        A = A*A % p
+        t = k % 2
+        if t == 1: b = A*b % p
+        k = int(k / 2)
+    return b
+def carmicheal(n):
+    for i in range(2, n):
+        if UCLN(i, n) == 1:
+            if nhan(i) != 1: return False
+    return True
+
+if __name__ == "__main__":
+    N = int(input("Nhap N:"))
+    tong = 0
+    for i in range(2, N):
+        if carmicheal(i) == True: tong+=i
+    print(tong)

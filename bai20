@@ -1,0 +1,21 @@
+import math
+
+def timUoc(a, b):
+    A = a
+    B = b
+    while B > 0:
+        r = A % B
+        A = B
+        B = r
+    return A
+
+def timCap():
+    m = int(input("Nhap m: "))
+    n = int(input("Nhap n:"))
+    d = int(input("Nhap d: "))
+
+    for a in range(m+1, n):
+        for b in range(a+1, n):
+            if timUoc(a, b) == d: print(a, b)
+
+timCap()

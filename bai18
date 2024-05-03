@@ -1,0 +1,39 @@
+import math
+import array
+
+def mang(arr, c, w, t):
+    for i in range(t - 1, -1, -1):
+        arr[i] = math.floor(c / 2**(i*w))
+        c = c - arr[i] * int(2**(i*w))
+    return arr
+
+def cong(arra, arrb, arrc, w, t):
+    r = 0
+    for i in range(0, t):
+        k = arra[i] + arrb[i]
+        if r == 1:
+            arrc[i] = (arra[i] + arrb[i] + 1) % int(math.pow(2, w))
+        else :
+            arrc[i] = (arra[i] + arrb[i]) % int(math.pow(2, w))
+
+        if(k < 2**w) and (k >= 0):
+            r = 0
+        else : r = 1
+    for i in range(0, t): print(arrc[i])
+
+if __name__ == "__main__":
+    a = int(input("Nhap a: "))
+    b = int(input("Nhap b: "))
+    p = int(input("Nhap p: "))
+    w = int(input("Nhap w: "))
+    m = int(math.log2(p))
+    t = int(math.ceil(m / w))
+
+    arra = array.array('i', [0]*t)
+    arrb = array.array('i', [0]*t)
+    arrc = array.array('i', [0]*t)
+
+    arra = mang(arra, a, w, t)
+    arrb = mang(arrb, b, w, t)
+
+    cong(arra, arrb, arrc, w, t)
